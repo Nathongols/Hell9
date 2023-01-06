@@ -19,6 +19,7 @@ public class PlayerPhysics : MonoBehaviour
 
     void Start() {
         dj2d.enabled = false;
+        lr.enabled = false;
     }
 
     //--------------------Collission -------------------------------------------
@@ -49,16 +50,19 @@ public class PlayerPhysics : MonoBehaviour
             if (_hit.transform.tag == "Enemy"){
                 lr.SetPosition(0, grapplePos);
                 lr.SetPosition(1, transform.position);
-                lr.enabled = false;
+                lr.enabled = true;
+                rb2d.velocity = new Vector2(0,0);
+                Vector2 dashDir = _hit.point - (Vector2)transform.position;
+                rb2d.AddForce(dashDir.normalized*18, ForceMode2D.Impulse);
             }
+            
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1)){
             dj2d.enabled = false;
             lr.enabled = false;
+            rb2d.gravityScale = 2f;
         }
-        if (dj2d.enabled){
-            lr.SetPosition(1, transform.position); 
-        }
+        lr.SetPosition(1, transform.position); 
     }
 
     RaycastHit2D SetGrapplePoint()
