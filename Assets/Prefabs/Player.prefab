@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1278549665}
   - component: {fileID: 1278549666}
   - component: {fileID: 1278549664}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6678741424548769724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.20752516, y: 0.15648653, z: 0}
-  m_LocalScale: {x: 0.43153614, y: 0.43153614, z: 0.43153614}
+  m_LocalScale: {x: 3.6361828, y: 3.6361828, z: 3.6361828}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67f7756dc2730494980a00e25e30d1cf, type: 3}
   m_Color: {r: 1, g: 0.4198113, b: 0.4198113, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,8 +123,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.05}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: -0.01}
+  m_Size: {x: 0.3, y: 0.33}
   m_Direction: 0
 --- !u!120 &1278549665
 LineRenderer:
@@ -146,7 +146,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: f1b8b5c1e2a19b846bb33f2899a481d7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,8 +177,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.012574896
+        time: 0.005584717
+        value: 0.10062575
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -186,8 +186,8 @@ LineRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.31564248
-        value: 0.15094173
+        time: 0.73741066
+        value: 0.25155818
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -199,10 +199,10 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0}
-      key1: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0.9915987}
-      key3: {r: 0, g: 0, b: 0, a: 0.8}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 0.5, g: 0.5, b: 0.5, a: 0.9915987}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
@@ -216,20 +216,20 @@ LineRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 6554
-      atime2: 8481
-      atime3: 52428
+      atime1: 8481
+      atime2: 65535
+      atime3: 65535
       atime4: 65535
       atime5: 0
       atime6: 0
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 5
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1
@@ -243,7 +243,7 @@ DistanceJoint2D:
   m_GameObject: {fileID: 6678741424548769724}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -251,7 +251,7 @@ DistanceJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 7.5123167
+  m_Distance: 5.9999356
   m_MaxDistanceOnly: 0
 --- !u!114 &1278549664
 MonoBehaviour:

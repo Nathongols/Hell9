@@ -28,6 +28,9 @@ public class PlayerPhysics : MonoBehaviour
             gameObject.transform.rotation = other.gameObject.transform.rotation;
             rb2d.velocity = new Vector2(other.gameObject.transform.up.x * bounce, other.gameObject.transform.up.y * bounce);
         }
+        if(other.gameObject.tag == "Spike"){
+            Destroy(gameObject);
+        }
     }
     private void FixedUpdate() {
         bounce = strength*rb2d.velocity.magnitude;
