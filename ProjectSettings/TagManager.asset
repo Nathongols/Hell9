@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trampoline
   - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX

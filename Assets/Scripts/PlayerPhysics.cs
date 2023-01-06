@@ -20,24 +20,37 @@ public class PlayerPhysics : MonoBehaviour
     void Start() {
         dj2d.enabled = false;
     }
+
+    //--------------------Collission -------------------------------------------
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Trampoline"){
             gameObject.transform.rotation = other.gameObject.transform.rotation;
             rb2d.velocity = new Vector2(other.gameObject.transform.up.x * bounce, other.gameObject.transform.up.y * bounce);
         }
     }
+    private void FixedUpdate() {
+        bounce = strength*rb2d.velocity.magnitude;
+    }
+
+    //--------------------Grappling Hook ---------------------------------------
 
     void Update()
     {
-        bounce = strength*rb2d.velocity.magnitude;
-
         if (Input.GetKeyDown(KeyCode.Mouse1)){
-            Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            lr.SetPosition(0,mousePos);
-            lr.SetPosition(1, transform.position);
-            dj2d.connectedAnchor = mousePos;
-            dj2d.enabled = true;
-            lr.enabled = true;
+            RaycastHit2D _hit = SetGrapplePoint();
+            Vector2 grapplePos = _hit.point;
+            if (_hit.transform.tag == "Wall"){
+                lr.SetPosition(0, grapplePos);
+                lr.SetPosition(1, transform.position);
+                dj2d.connectedAnchor = grapplePos;
+                dj2d.enabled = true;
+                lr.enabled = true;
+            }
+            if (_hit.transform.tag == "Enemy"){
+                lr.SetPosition(0, grapplePos);
+                lr.SetPosition(1, transform.position);
+                lr.enabled = false;
+            }
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1)){
             dj2d.enabled = false;
@@ -46,5 +59,12 @@ public class PlayerPhysics : MonoBehaviour
         if (dj2d.enabled){
             lr.SetPosition(1, transform.position); 
         }
+    }
+
+    RaycastHit2D SetGrapplePoint()
+    {
+        Vector2 distanceVector = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        RaycastHit2D hitGround = Physics2D.Raycast(transform.position, distanceVector.normalized);
+        return hitGround;
     }
 }
