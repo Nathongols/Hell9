@@ -31,9 +31,9 @@ public class trampolineGen : MonoBehaviour
             coolReady = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && PauseMenu.isPaused == false){
+        if (Input.GetKeyDown(KeyCode.Space)){
             Time.timeScale = 0.25f;
-        } else if (Input.GetKeyUp(KeyCode.Space) &&  PauseMenu.isPaused == false){
+        } else if (Input.GetKeyUp(KeyCode.Space)){
             Time.timeScale = 1f;
         }
 
