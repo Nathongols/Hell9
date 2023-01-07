@@ -13,7 +13,6 @@ public class trampolineGen : MonoBehaviour
 
     private float timer = 0.0f;
     private float coolDown = 1.5f;
-    private float visualTime = 0.0f;
     private bool coolReady = true;
     // Start is called before the first frame update
     void Start()
