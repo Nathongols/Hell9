@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class trampolineGen : MonoBehaviour
-{   
+{
     [SerializeField] private Camera mainCamera;
     public GameObject myPrefab;
     private Vector2 pos1;
@@ -13,35 +13,31 @@ public class trampolineGen : MonoBehaviour
 
     private float timer = 0.0f;
     private float coolDown = 1.5f;
+    private float visualTime = 0.0f;
     private bool coolReady = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     // Update is called once per frame
     void Update()
-    {   
-        
+    {
+
         timer += Time.deltaTime;
-        
+
         if (timer > coolDown){
             coolReady = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space)){
-            Time.timeScale = 0.25f;
-            timer += Time.deltaTime;
-        } else if (Input.GetKeyUp(KeyCode.Space)){
-            Time.timeScale = 1f;
         }
 
         if (PauseMenu.isPaused == false){
             if (coolReady){
                 if (Input.GetKeyDown(KeyCode.Mouse0)){
                     pos1 = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                    Time.timeScale = 0.5f;
                 } else if (Input.GetKeyUp(KeyCode.Mouse0)){
                     pos2 = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                    Time.timeScale = 1f;
                     dist = Vector2.Distance(pos1, pos2);
                     Debug.Log(dist);
                     ang = Mathf.Atan2(pos2.y - pos1.y, pos2.x - pos1.x) * 180 / Mathf.PI;
