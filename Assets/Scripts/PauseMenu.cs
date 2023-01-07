@@ -33,10 +33,12 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu(){
         Debug.Log("ok");
+        
         SceneManager.LoadScene("LevelSelection");
+        Resume();
     }
 
     public void QuitGame(){
-
+        Debug.Log("QUIT");
     }
 }

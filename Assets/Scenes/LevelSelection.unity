@@ -499,5 +499,13 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5698846141656737840, guid: 911cbb3cbb428a34087c6dd87cc7f101, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698846141656737840, guid: 911cbb3cbb428a34087c6dd87cc7f101, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 911cbb3cbb428a34087c6dd87cc7f101, type: 3}
