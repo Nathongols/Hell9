@@ -25,8 +25,6 @@ public class PlayerPhysics : MonoBehaviour
     //--------------------Collission -------------------------------------------
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Trampoline"){
-
-            //gameObject.transform.rotation = other.gameObject.transform.rotation;
             if (other.gameObject.transform.localEulerAngles.z <= 90f || other.gameObject.transform.localEulerAngles.z >= 270f){
                 rb2d.AddForce(new Vector2(other.gameObject.transform.up.x * bounce, other.gameObject.transform.up.y * bounce), ForceMode2D.Impulse);
             }
@@ -45,34 +43,35 @@ public class PlayerPhysics : MonoBehaviour
     //--------------------Grappling Hook ---------------------------------------
 
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1)){
-            RaycastHit2D _hit = SetGrapplePoint();
-            Vector2 grapplePos = _hit.point;
-            if (_hit.transform.tag == "Wall"){
-                lr.SetPosition(0, grapplePos);
-                lr.SetPosition(1, transform.position);
-                dj2d.connectedAnchor = grapplePos;
-                dj2d.enabled = true;
-                lr.enabled = true;
+    {   
+        if (PauseMenu.isPaused == false){
+            if (Input.GetKeyDown(KeyCode.Mouse1)){
+                RaycastHit2D _hit = SetGrapplePoint();
+                Vector2 grapplePos = _hit.point;
+                if (_hit.transform.tag == "Wall"){
+                    lr.SetPosition(0, grapplePos);
+                    lr.SetPosition(1, transform.position);
+                    dj2d.connectedAnchor = grapplePos;
+                    dj2d.enabled = true;
+                    lr.enabled = true;
+                }
+                if (_hit.transform.tag == "Enemy"){
+                    lr.SetPosition(0, grapplePos);
+                    lr.SetPosition(1, transform.position);
+                    lr.enabled = true;
+                    rb2d.velocity = new Vector2(0,0);
+                    Vector2 dashDir = _hit.point - (Vector2)transform.position;
+                    rb2d.AddForce(dashDir.normalized*18, ForceMode2D.Impulse);
+                }
+                
             }
-            if (_hit.transform.tag == "Enemy"){
-                lr.SetPosition(0, grapplePos);
-                lr.SetPosition(1, transform.position);
-                lr.enabled = true;
-                rb2d.velocity = new Vector2(0,0);
-                Vector2 dashDir = _hit.point - (Vector2)transform.position;
-                rb2d.AddForce(dashDir.normalized*18, ForceMode2D.Impulse);
+            else if (Input.GetKeyUp(KeyCode.Mouse1)){
+                dj2d.enabled = false;
+                lr.enabled = false;
+                rb2d.gravityScale = 2f;
             }
-            
+            lr.SetPosition(1, transform.position); 
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse1)){
-            dj2d.enabled = false;
-            lr.enabled = false;
-            rb2d.gravityScale = 2f;
-        }
-        lr.SetPosition(1, transform.position); 
-
     }
 
     RaycastHit2D SetGrapplePoint()
