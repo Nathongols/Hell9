@@ -7,6 +7,7 @@ TagManager:
   - Trampoline
   - Wall
   - Enemy
+  - Spike
   layers:
   - Default
   - TransparentFX
