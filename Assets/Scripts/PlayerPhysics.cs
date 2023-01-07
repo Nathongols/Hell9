@@ -25,8 +25,8 @@ public class PlayerPhysics : MonoBehaviour
     //--------------------Collission -------------------------------------------
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Trampoline"){
-            gameObject.transform.rotation = other.gameObject.transform.rotation;
-            rb2d.velocity = new Vector2(other.gameObject.transform.up.x * bounce, other.gameObject.transform.up.y * bounce);
+            //gameObject.transform.rotation = other.gameObject.transform.rotation;
+            rb2d.AddForce(new Vector2(other.gameObject.transform.up.x * bounce, other.gameObject.transform.up.y * bounce), ForceMode2D.Impulse);
         }
         if(other.gameObject.tag == "Spike"){
             Destroy(gameObject);
@@ -66,6 +66,7 @@ public class PlayerPhysics : MonoBehaviour
             rb2d.gravityScale = 2f;
         }
         lr.SetPosition(1, transform.position); 
+
     }
 
     RaycastHit2D SetGrapplePoint()
