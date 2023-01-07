@@ -15,6 +15,7 @@ public class trampolineGen : MonoBehaviour
     private float coolDown = 1.5f;
     private float visualTime = 0.0f;
     private bool coolReady = true;
+    private bool newPos1 = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,14 +31,19 @@ public class trampolineGen : MonoBehaviour
             coolReady = true;
         }
 
+        if (Input.GetKeyDown(KeyCode.Space) && PauseMenu.isPaused == false){
+            Time.timeScale = 0.25f;
+        } else if (Input.GetKeyUp(KeyCode.Space) &&  PauseMenu.isPaused == false){
+            Time.timeScale = 1f;
+        }
+
         if (PauseMenu.isPaused == false){
             if (coolReady){
-                if (Input.GetKeyDown(KeyCode.Mouse0)){
+                if (Input.GetKeyDown(KeyCode.Mouse0) && (coolReady)){
+                    newPos1 = true;
                     pos1 = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                    Time.timeScale = 0.5f;
-                } else if (Input.GetKeyUp(KeyCode.Mouse0)){
+                } else if (Input.GetKeyUp(KeyCode.Mouse0) && (coolReady) && (newPos1)){
                     pos2 = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                    Time.timeScale = 1f;
                     dist = Vector2.Distance(pos1, pos2);
                     Debug.Log(dist);
                     ang = Mathf.Atan2(pos2.y - pos1.y, pos2.x - pos1.x) * 180 / Mathf.PI;
@@ -53,7 +59,9 @@ public class trampolineGen : MonoBehaviour
                     GameObject Create3 = Instantiate(myPrefab, pos2, target);
                     Destroy(Create3, 2f);
                     coolReady = false;
+                    newPos1 = false;
                     timer = 0.0f;
+
                 }
             }
         }

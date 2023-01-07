@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Enemy
   - Spike
+  - Trigger
   layers:
   - Default
   - TransparentFX

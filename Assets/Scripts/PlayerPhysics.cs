@@ -9,6 +9,7 @@ public class PlayerPhysics : MonoBehaviour
     private LineRenderer lr = new LineRenderer();
     private DistanceJoint2D dj2d = new DistanceJoint2D();
     private float bounce;
+    private int trig = 0;
     [SerializeField] private float strength;
     void Awake()
     {
@@ -35,6 +36,7 @@ public class PlayerPhysics : MonoBehaviour
         if(other.gameObject.tag == "Spike"){
             Destroy(gameObject);
         }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -46,9 +48,22 @@ public class PlayerPhysics : MonoBehaviour
                 rb2d.AddForce(new Vector2(-other.gameObject.transform.up.x * bounce, -other.gameObject.transform.up.y * bounce), ForceMode2D.Impulse);
             }
         }
+
+        if(other.gameObject.tag == "Trigger"){
+            if (trig == 0){
+                Debug.Log("one");
+                TriggerScript.isStep1 = false;
+                TriggerScript.isStep2 = true;
+                trig += 1;
+            } else if (trig == 1){
+                TriggerScript.isStep2 = false;
+                TriggerScript.isStep3 = true;
+                trig += 1;
+            } 
+        }
     }
     private void FixedUpdate() {
-        bounce = strength*rb2d.velocity.magnitude*2;
+        bounce = strength*rb2d.velocity.magnitude;
     }
 
     //--------------------Grappling Hook ---------------------------------------
