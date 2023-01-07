@@ -25,8 +25,14 @@ public class PlayerPhysics : MonoBehaviour
     //--------------------Collission -------------------------------------------
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Trampoline"){
+
             //gameObject.transform.rotation = other.gameObject.transform.rotation;
-            rb2d.AddForce(new Vector2(other.gameObject.transform.up.x * bounce, other.gameObject.transform.up.y * bounce), ForceMode2D.Impulse);
+            if (other.gameObject.transform.localEulerAngles.z <= 90f || other.gameObject.transform.localEulerAngles.z >= 270f){
+                rb2d.AddForce(new Vector2(other.gameObject.transform.up.x * bounce, other.gameObject.transform.up.y * bounce), ForceMode2D.Impulse);
+            }
+            else {
+                rb2d.AddForce(new Vector2(-other.gameObject.transform.up.x * bounce, -other.gameObject.transform.up.y * bounce), ForceMode2D.Impulse);
+            }
         }
         if(other.gameObject.tag == "Spike"){
             Destroy(gameObject);
