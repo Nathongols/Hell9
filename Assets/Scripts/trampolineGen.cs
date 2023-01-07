@@ -19,17 +19,19 @@ public class trampolineGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        
-        if (Input.GetKeyDown(KeyCode.Mouse0)){
-            pos1 = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        } else if (Input.GetKeyUp(KeyCode.Mouse0)){
-            pos2 = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            dist = Vector2.Distance(pos1, pos2);
-            ang = Mathf.Atan2(pos2.y - pos1.y, pos2.x - pos1.x) * 180 / Mathf.PI;
-            Quaternion target = Quaternion.Euler(0, 0, ang);
-            Instantiate(myPrefab, pos1, target);
-            myPrefab.transform.localScale = new Vector2(dist, myPrefab.transform.localScale.y);
+        if (PauseMenu.isPaused == false){
+            if (Input.GetKeyDown(KeyCode.Mouse0)){
+                pos1 = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            } else if (Input.GetKeyUp(KeyCode.Mouse0)){
+                pos2 = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                dist = Vector2.Distance(pos1, pos2);
+                ang = Mathf.Atan2(pos2.y - pos1.y, pos2.x - pos1.x) * 180 / Mathf.PI;
+                Debug.Log(ang);
+                Quaternion target = Quaternion.Euler(0, 0, ang);
+                Instantiate(myPrefab, pos1, target);
+                myPrefab.transform.localScale = new Vector2(dist, myPrefab.transform.localScale.y);
 
+            }
         }
     }
 }
