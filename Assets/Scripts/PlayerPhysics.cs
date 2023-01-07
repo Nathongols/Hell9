@@ -48,7 +48,7 @@ public class PlayerPhysics : MonoBehaviour
         }
     }
     private void FixedUpdate() {
-        bounce = strength*rb2d.velocity.magnitude*2;
+        bounce = strength*rb2d.velocity.magnitude;
     }
 
     //--------------------Grappling Hook ---------------------------------------
