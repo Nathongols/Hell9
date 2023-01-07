@@ -26,18 +26,29 @@ public class PlayerPhysics : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Trampoline"){
             if (other.gameObject.transform.localEulerAngles.z <= 90f || other.gameObject.transform.localEulerAngles.z >= 270f){
-                rb2d.AddForce(new Vector2(other.gameObject.transform.up.x * bounce, other.gameObject.transform.up.y * bounce), ForceMode2D.Impulse);
+                rb2d.AddForce(new Vector2(other.gameObject.transform.up.x * bounce *0.6f, other.gameObject.transform.up.y * bounce *0.6f), ForceMode2D.Impulse);
             }
             else {
-                rb2d.AddForce(new Vector2(-other.gameObject.transform.up.x * bounce, -other.gameObject.transform.up.y * bounce), ForceMode2D.Impulse);
+                rb2d.AddForce(new Vector2(-other.gameObject.transform.up.x * bounce*0.6f, -other.gameObject.transform.up.y * bounce*0.6f), ForceMode2D.Impulse);
             }
         }
         if(other.gameObject.tag == "Spike"){
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Trampoline"){
+            if (other.gameObject.transform.localEulerAngles.z <= 90f || other.gameObject.transform.localEulerAngles.z >= 270f){
+                rb2d.AddForce(new Vector2(other.gameObject.transform.up.x * bounce*other.gameObject.transform.localScale.z, other.gameObject.transform.up.y * bounce*other.gameObject.transform.localScale.z), ForceMode2D.Impulse);
+            }
+            else {
+                rb2d.AddForce(new Vector2(-other.gameObject.transform.up.x * bounce, -other.gameObject.transform.up.y * bounce), ForceMode2D.Impulse);
+            }
+        }
+    }
     private void FixedUpdate() {
-        bounce = strength*rb2d.velocity.magnitude;
+        bounce = strength*rb2d.velocity.magnitude*2;
     }
 
     //--------------------Grappling Hook ---------------------------------------
@@ -61,14 +72,14 @@ public class PlayerPhysics : MonoBehaviour
                     lr.enabled = true;
                     rb2d.velocity = new Vector2(0,0);
                     Vector2 dashDir = _hit.point - (Vector2)transform.position;
-                    rb2d.AddForce(dashDir.normalized*18, ForceMode2D.Impulse);
+                    rb2d.AddForce(dashDir.normalized*20, ForceMode2D.Impulse);
                 }
                 
             }
             else if (Input.GetKeyUp(KeyCode.Mouse1)){
                 dj2d.enabled = false;
                 lr.enabled = false;
-                rb2d.gravityScale = 2f;
+                rb2d.gravityScale = 1f;
             }
             lr.SetPosition(1, transform.position); 
         }
