@@ -14,7 +14,9 @@ public class PlayerPhysics : MonoBehaviour
     private float coolDown = 0.1f;
     private bool grapple = false;
 
-    private float timerScore = 0.0f;
+    [SerializeField] private GameObject startUI;
+    private bool isReady = false;
+
     [SerializeField] private float strength;
     void Awake()
     {
@@ -42,6 +44,9 @@ public class PlayerPhysics : MonoBehaviour
         }
         }
         if(other.gameObject.tag == "Spike"){
+            TimerUI.timerActive = false;
+            PauseMenu.isPaused2 = true;
+            PauseMenu.isDead = true;
             Destroy(gameObject);
         }
         
@@ -98,52 +103,70 @@ public class PlayerPhysics : MonoBehaviour
         
     }
 
+
     //--------------------Grappling Hook ---------------------------------------
     void Update()
-    {      
+    {   
+
         timer += Time.deltaTime;
-        timerScore += Time.deltaTime;
         if (PauseMenu.isPaused == false){
-            
-            if (Input.GetKeyDown(KeyCode.Mouse1)){
-                RaycastHit2D _hit = SetGrapplePoint();
-                Vector2 grapplePos = _hit.point;
-                if (_hit.transform.tag == "Wall" /*&& grapple */){
-                    if (rb2d.velocity.magnitude == 0){ // stuck fail safe?
+            if (isReady){
+                if (Input.GetKeyDown(KeyCode.Mouse1) && isReady){
+                    Debug.Log("ok");
+                    RaycastHit2D _hit = SetGrapplePoint();
+                    Vector2 grapplePos = _hit.point;
+                    if (_hit.transform.tag == "Wall" /*&& grapple */){
+                        if (rb2d.velocity.magnitude == 0){ // stuck fail safe?
+                            lr.SetPosition(0, grapplePos);
+                            lr.SetPosition(1, transform.position);
+                            lr.enabled = true;
+                            rb2d.velocity = new Vector2(0,0);
+                            Vector2 dashDir = _hit.point - (Vector2)transform.position;
+                            rb2d.AddForce(dashDir.normalized*8, ForceMode2D.Impulse);
+                        } else{
+                            lr.SetPosition(0, grapplePos);
+                            lr.SetPosition(1, transform.position);
+                            dj2d.connectedAnchor = grapplePos;
+                            dj2d.enabled = true;
+                            lr.enabled = true;
+                        }
+                    }
+                    if (_hit.transform.tag == "Enemy" /*&& grapple */){
                         lr.SetPosition(0, grapplePos);
                         lr.SetPosition(1, transform.position);
                         lr.enabled = true;
                         rb2d.velocity = new Vector2(0,0);
                         Vector2 dashDir = _hit.point - (Vector2)transform.position;
-                        rb2d.AddForce(dashDir.normalized*8, ForceMode2D.Impulse);
-                    } else{
-                        lr.SetPosition(0, grapplePos);
-                        lr.SetPosition(1, transform.position);
-                        dj2d.connectedAnchor = grapplePos;
-                        dj2d.enabled = true;
-                        lr.enabled = true;
+                        rb2d.AddForce(dashDir.normalized*20, ForceMode2D.Impulse);
                     }
                 }
-                if (_hit.transform.tag == "Enemy" /*&& grapple */){
-                    lr.SetPosition(0, grapplePos);
-                    lr.SetPosition(1, transform.position);
-                    lr.enabled = true;
-                    rb2d.velocity = new Vector2(0,0);
-                    Vector2 dashDir = _hit.point - (Vector2)transform.position;
-                    rb2d.AddForce(dashDir.normalized*20, ForceMode2D.Impulse);
+                else if (Input.GetKeyUp(KeyCode.Mouse1) && isReady){
+                    dj2d.enabled = false;
+                    lr.enabled = false;
+                    rb2d.gravityScale = 1f;
                 }
+                lr.SetPosition(1, transform.position);
                 
-            }
-            else if (Input.GetKeyUp(KeyCode.Mouse1)){
-                dj2d.enabled = false;
-                lr.enabled = false;
-                rb2d.gravityScale = 1f;
-            }
-            lr.SetPosition(1, transform.position);
-            
-        }
-        
+            } else if (Input.GetKeyDown(KeyCode.Mouse1)){
+                    
+                    startUI.SetActive(false);
+                    TimerUI.timerActive = true;
+                    isReady = true;
+                    Time.timeScale = 1.0f;
+                
+        } else if (Input.GetKeyDown(KeyCode.Mouse0) ){
+                    startUI.SetActive(false);
+                    TimerUI.timerActive = true;
+                    isReady = true;
+                    Time.timeScale = 1.0f;
+        } else{
+            startUI.SetActive(true);
+            Time.timeScale = 0.0f;
+        } 
     }
+        
+        
+}
 
     RaycastHit2D SetGrapplePoint()
     {
