@@ -6,6 +6,7 @@ public class trampolineGen : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     public GameObject myPrefab;
+    public static bool isSlowed;
     private Vector2 pos1;
     private Vector2 pos2;
     private float dist;
@@ -40,8 +41,10 @@ public class trampolineGen : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space)){
+            isSlowed = true;
             Time.timeScale = 0.25f;
         } else if (Input.GetKeyUp(KeyCode.Space)){
+            isSlowed = false;
             Time.timeScale = 1f;
         }
 
