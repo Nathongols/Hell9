@@ -51,13 +51,13 @@ public class trampolineGen : MonoBehaviour
                     GameObject Create = Instantiate(myPrefab, pos1, target);
                     Destroy(Create, 2f);
                     float Track = 0;
-                    for (float i = 0; i < dist * 10; i++){
+                    for (float i = 1; i < dist * 8 ; i++){
                         GameObject Create2 = Instantiate(myPrefab,Vector3.Lerp(pos1, pos2, Track) , target);
-                        Track += 0.025f;
+                        Track += 0.020f;
                         Destroy(Create2, 2f);
                     }
-                    GameObject Create3 = Instantiate(myPrefab, pos2, target);
-                    Destroy(Create3, 2f);
+                    //GameObject Create3 = Instantiate(myPrefab, pos2, target);
+                   // Destroy(Create3, 2f);
                     coolReady = false;
                     newPos1 = false;
                     timer = 0.0f;

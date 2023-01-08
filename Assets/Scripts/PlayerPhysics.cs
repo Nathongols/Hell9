@@ -10,6 +10,8 @@ public class PlayerPhysics : MonoBehaviour
     private DistanceJoint2D dj2d = new DistanceJoint2D();
     private float bounce;
     private int trig = 0;
+    private float timer = 0.0f;
+    private float coolDown = 0.1f;
     [SerializeField] private float strength;
     void Awake()
     {
@@ -25,13 +27,16 @@ public class PlayerPhysics : MonoBehaviour
 
     //--------------------Collission -------------------------------------------
     private void OnCollisionEnter2D(Collision2D other) {
+        if (timer > coolDown){
         if(other.gameObject.tag == "Trampoline"){
+            timer = 0.0f;
             if (other.gameObject.transform.localEulerAngles.z <= 90f || other.gameObject.transform.localEulerAngles.z >= 270f){
-                rb2d.AddForce(new Vector2(other.gameObject.transform.up.x * bounce *0.6f, other.gameObject.transform.up.y * bounce *0.6f), ForceMode2D.Impulse);
+                rb2d.AddRelativeForce(new Vector2(other.gameObject.transform.up.x * bounce *0.6f, other.gameObject.transform.up.y * bounce *0.6f), ForceMode2D.Impulse);
             }
             else {
-                rb2d.AddForce(new Vector2(-other.gameObject.transform.up.x * bounce*0.6f, -other.gameObject.transform.up.y * bounce*0.6f), ForceMode2D.Impulse);
+                rb2d.AddRelativeForce(new Vector2(-other.gameObject.transform.up.x * bounce*0.6f, -other.gameObject.transform.up.y * bounce*0.6f), ForceMode2D.Impulse);
             }
+        }
         }
         if(other.gameObject.tag == "Spike"){
             Destroy(gameObject);
@@ -69,7 +74,8 @@ public class PlayerPhysics : MonoBehaviour
     //--------------------Grappling Hook ---------------------------------------
 
     void Update()
-    {   
+    {      
+        timer += Time.deltaTime;
         if (PauseMenu.isPaused == false){
             if (Input.GetKeyDown(KeyCode.Mouse1)){
                 RaycastHit2D _hit = SetGrapplePoint();
