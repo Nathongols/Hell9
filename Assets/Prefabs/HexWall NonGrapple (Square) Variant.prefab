@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
     - target: {fileID: 7093160665783446013, guid: 04f321bb16f566e49b7f93b127ca0408, type: 3}
       propertyPath: m_Name
-      value: HexWall NonGrapple (Square)
+      value: HexWall NonGrapple (Square) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8671229592493616453, guid: 04f321bb16f566e49b7f93b127ca0408, type: 3}
       propertyPath: m_RootOrder
@@ -80,7 +80,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.0000009536743}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -91,5 +91,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8828125}
+  m_Size: {x: 1, y: 0.9986515}
   m_EdgeRadius: 0

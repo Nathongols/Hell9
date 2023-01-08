@@ -12,7 +12,7 @@ public class trampolineGen : MonoBehaviour
     private float dist;
     private float ang;
 
-    private float timer = 0.0f;
+    private float timer = 1.5f;
     private float coolDown = 1.5f;
     public static bool coolReady = true;
     private bool newPos1 = false;
