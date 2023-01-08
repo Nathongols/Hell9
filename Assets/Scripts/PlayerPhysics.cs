@@ -13,6 +13,8 @@ public class PlayerPhysics : MonoBehaviour
     private float timer = 0.0f;
     private float coolDown = 0.1f;
     private bool grapple = false;
+
+    private float timerScore = 0.0f;
     [SerializeField] private float strength;
     void Awake()
     {
@@ -46,13 +48,17 @@ public class PlayerPhysics : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Trampoline"){
+        if(other.gameObject.tag == "Boost"){
+            Debug.Log("0");
             if (other.gameObject.transform.localEulerAngles.z <= 90f || other.gameObject.transform.localEulerAngles.z >= 270f){
-                rb2d.AddForce(new Vector2(other.gameObject.transform.up.x * bounce*other.gameObject.transform.localScale.z, other.gameObject.transform.up.y * bounce*other.gameObject.transform.localScale.z), ForceMode2D.Impulse);
+                rb2d.AddRelativeForce(new Vector2(other.gameObject.transform.right.x * 10, other.gameObject.transform.up.y * 3), ForceMode2D.Impulse);
+                Debug.Log("1");
             }
             else {
-                rb2d.AddForce(new Vector2(-other.gameObject.transform.up.x * bounce, -other.gameObject.transform.up.y * bounce), ForceMode2D.Impulse);
+                Debug.Log("2");
+                rb2d.AddRelativeForce(new Vector2(-other.gameObject.transform.right.x * 10, -other.gameObject.transform.up.y * 3), ForceMode2D.Impulse);
             }
+
         }
 
         if(other.gameObject.tag == "Trigger"){
@@ -96,6 +102,7 @@ public class PlayerPhysics : MonoBehaviour
     void Update()
     {      
         timer += Time.deltaTime;
+        timerScore += Time.deltaTime;
         if (PauseMenu.isPaused == false){
             
             if (Input.GetKeyDown(KeyCode.Mouse1)){
