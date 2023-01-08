@@ -1015,7 +1015,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Created by: Nathongols, Rhyickk'
+  m_text: 'Created by: Nathongols, Rhyickk
+
+    Music by: PrinceMagz'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2172,10 +2174,6 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 208083116}
-    - target: {fileID: 1278549666, guid: 1b273673d9b15e0488c88aea60ffc7de, type: 3}
-      propertyPath: m_Distance
-      value: 4.6319056
-      objectReference: {fileID: 0}
     - target: {fileID: 125417165526212151, guid: 1b273673d9b15e0488c88aea60ffc7de, type: 3}
       propertyPath: m_RootOrder
       value: 7
