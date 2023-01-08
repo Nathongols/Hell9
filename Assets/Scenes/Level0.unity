@@ -981,7 +981,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press right click to start a grapple on a wall!
+  m_text: Press right click to start a web on a wall!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1096,8 +1096,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Only certain walls can be grappled onto, walls that are orange can't be
-    used to graple!
+  m_text: Only certain walls can be swung on, walls that are orange can't be used
+    to swing!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hold space to slow down time for more precision!
+  m_text: Hold space to slow down time for more precision (Timer is still real time)!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1739,8 +1739,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press left click to create a  start location and release at an end location
-    to make a trampoline (2 Sec. Cooldown)!
+  m_text: Press left click to create a start location and release at an end location
+    to make a web trampoline (1.5 Sec. Cooldown)!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3978,19 +3978,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2922840412388329525, guid: 1b47f72c849e99d4991e2672e3951895, type: 3}
       propertyPath: m_LocalScale.x
-      value: 77.5907
+      value: 77.56712
       objectReference: {fileID: 0}
     - target: {fileID: 2922840412388329525, guid: 1b47f72c849e99d4991e2672e3951895, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.80289
+      value: 3.333151
       objectReference: {fileID: 0}
     - target: {fileID: 2922840412388329525, guid: 1b47f72c849e99d4991e2672e3951895, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0729
+      value: 1.0622
       objectReference: {fileID: 0}
     - target: {fileID: 2922840412388329525, guid: 1b47f72c849e99d4991e2672e3951895, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.8948
+      value: -7.637
       objectReference: {fileID: 0}
     - target: {fileID: 2922840412388329525, guid: 1b47f72c849e99d4991e2672e3951895, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4289,29 +4289,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2569570477297965123, guid: 2d25ce0a292c2c745bce971791da58e3, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 108.1963
-      objectReference: {fileID: 0}
-    - target: {fileID: 2569570477297965123, guid: 2d25ce0a292c2c745bce971791da58e3, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 120.0081
-      objectReference: {fileID: 0}
-    - target: {fileID: 2569570477297965123, guid: 2d25ce0a292c2c745bce971791da58e3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 50.249695
-      objectReference: {fileID: 0}
-    - target: {fileID: 2569570477297965123, guid: 2d25ce0a292c2c745bce971791da58e3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 52.516235
-      objectReference: {fileID: 0}
     - target: {fileID: 6738271113233627371, guid: 2d25ce0a292c2c745bce971791da58e3, type: 3}
       propertyPath: m_Name
       value: LevelFin Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 6738271113233627371, guid: 2d25ce0a292c2c745bce971791da58e3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8849075718731043132, guid: 2d25ce0a292c2c745bce971791da58e3, type: 3}
       propertyPath: m_IsActive

@@ -70,6 +70,12 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void QuitGame(){
-        Application.Quit();
+        isDead = false;
+        pauseMenuUI.SetActive(false);
+        PauseMenu.isPaused2 = false;
+        PlayerPhysics.trig = 0;
+        TimerUI.timeScore = 0.0f;
+        SceneManager.LoadScene("MainMenu");
+        Resume();
     }
 }
