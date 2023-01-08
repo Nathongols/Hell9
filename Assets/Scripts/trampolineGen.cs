@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class trampolineGen : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
@@ -13,17 +13,26 @@ public class trampolineGen : MonoBehaviour
 
     private float timer = 0.0f;
     private float coolDown = 1.5f;
-    private float visualTime = 0.0f;
-    private bool coolReady = true;
+    public static bool coolReady = true;
     private bool newPos1 = false;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
     // Update is called once per frame
     void Update()
     {
+
+        
+  
+        
+        
+        if (Input.GetKeyDown(KeyCode.R)){
+            PlayerPhysics.trig = 0;
+                SceneManager.LoadScene("Level" + LevelSelector.selectedLevel);
+            }
 
         timer += Time.deltaTime;
 
@@ -51,13 +60,13 @@ public class trampolineGen : MonoBehaviour
                     GameObject Create = Instantiate(myPrefab, pos1, target);
                     Destroy(Create, 2f);
                     float Track = 0;
-                    for (float i = 0; i < dist * 10; i++){
+                    for (float i = 1; i < dist * 8 ; i++){
                         GameObject Create2 = Instantiate(myPrefab,Vector3.Lerp(pos1, pos2, Track) , target);
-                        Track += 0.025f;
+                        Track += 0.020f;
                         Destroy(Create2, 2f);
                     }
-                    GameObject Create3 = Instantiate(myPrefab, pos2, target);
-                    Destroy(Create3, 2f);
+                    //GameObject Create3 = Instantiate(myPrefab, pos2, target);
+                   // Destroy(Create3, 2f);
                     coolReady = false;
                     newPos1 = false;
                     timer = 0.0f;
