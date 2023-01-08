@@ -19,6 +19,7 @@ public class LevelSelector : MonoBehaviour
     public void OpenScene() {
         selectedLevel = level;
         nextLevel = level + 1;
+        TimerUI.timeScore = 0;
         SceneManager.LoadScene("Level" + level.ToString());
         
     }

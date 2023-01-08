@@ -25,13 +25,12 @@ public class trampolineGen : MonoBehaviour
     void Update()
     {
 
-        
-  
-        
-        
         if (Input.GetKeyDown(KeyCode.R)){
+            PauseMenu.isPaused2 = false;
+            PauseMenu.isPaused = false;
             PlayerPhysics.trig = 0;
-                SceneManager.LoadScene("Level" + LevelSelector.selectedLevel);
+            TimerUI.timeScore = 0.0f;
+            SceneManager.LoadScene("Level" + LevelSelector.selectedLevel);
             }
 
         timer += Time.deltaTime;
