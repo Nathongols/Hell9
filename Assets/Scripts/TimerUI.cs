@@ -13,7 +13,7 @@ public class TimerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        trampolineGen.isSlowed = false;
     }
 
     // Update is called once per frame
