@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class trampolineGen : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
@@ -13,17 +13,26 @@ public class trampolineGen : MonoBehaviour
 
     private float timer = 0.0f;
     private float coolDown = 1.5f;
-    private float visualTime = 0.0f;
-    private bool coolReady = true;
+    public static bool coolReady = true;
     private bool newPos1 = false;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
     // Update is called once per frame
     void Update()
     {
+
+        
+  
+        
+        
+        if (Input.GetKeyDown(KeyCode.R)){
+            PlayerPhysics.trig = 0;
+                SceneManager.LoadScene("Level" + LevelSelector.selectedLevel);
+            }
 
         timer += Time.deltaTime;
 

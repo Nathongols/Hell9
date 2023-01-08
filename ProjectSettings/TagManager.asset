@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Spike
   - Trigger
+  - Success
   layers:
   - Default
   - TransparentFX

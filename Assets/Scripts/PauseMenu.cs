@@ -11,12 +11,18 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)){
+        if (Input.GetKeyDown(KeyCode.Escape) && !(WinScreen.winCheck)){
             if (isPaused){
                 Resume();
             } else {
                 Pause();
             }
+        }
+
+        if (WinScreen.winCheck){
+            Pause();
+        } else{
+            //Resume();
         }
     }
     public void Resume(){
@@ -26,7 +32,10 @@ public class PauseMenu : MonoBehaviour
     }
 
     void Pause(){
+        if (!WinScreen.winCheck){
         pauseMenuUI.SetActive(true);
+        }
+        Debug.Log("yep?");
         Time.timeScale = 0f;
         isPaused = true;
     }
