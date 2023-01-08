@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 195758523032605906}
   - component: {fileID: 195758523032605933}
+  - component: {fileID: 612645772568823243}
   m_Layer: 0
   m_Name: trampPos
   m_TagString: Untagged
@@ -46,3 +47,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   myPrefab: {fileID: 6767182951967325869, guid: aaa909132ee79324d8dd9c0fed3917e9, type: 3}
+--- !u!114 &612645772568823243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195758523032605932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ab3d2f414370c48958b5f0e6fd928a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineprefab: {fileID: 2762470941765259819, guid: 6cba505a24f45044795e47e15ae19a6e, type: 3}
+  currentLine: {fileID: 0}
+  linerenderer: {fileID: 0}
+  edgeCollider: {fileID: 0}
+  FingerPositions: []

@@ -51,12 +51,12 @@ public class PlayerPhysics : MonoBehaviour
         if(other.gameObject.tag == "Boost"){
             Debug.Log("0");
             if (other.gameObject.transform.localEulerAngles.z <= 90f || other.gameObject.transform.localEulerAngles.z >= 270f){
-                rb2d.AddRelativeForce(new Vector2(other.gameObject.transform.right.x * 10, other.gameObject.transform.up.y * 3), ForceMode2D.Impulse);
+                rb2d.AddRelativeForce(new Vector2(other.gameObject.transform.right.x * 0.3f * bounce, other.gameObject.transform.up.y * 0.3f * bounce), ForceMode2D.Impulse);
                 Debug.Log("1");
             }
             else {
                 Debug.Log("2");
-                rb2d.AddRelativeForce(new Vector2(-other.gameObject.transform.right.x * 10, -other.gameObject.transform.up.y * 3), ForceMode2D.Impulse);
+                rb2d.AddRelativeForce(new Vector2(-other.gameObject.transform.right.x * 0.3f * bounce, -other.gameObject.transform.up.y * 0.3f * bounce), ForceMode2D.Impulse);
             }
 
         }
