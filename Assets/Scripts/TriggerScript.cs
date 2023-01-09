@@ -29,7 +29,6 @@ public class TriggerScript : MonoBehaviour
 
         if (isStep2 == true){
             triggerUI2.SetActive(true);
-            Debug.Log("okw");
         } else{
             triggerUI2.SetActive(false);
         }

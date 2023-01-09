@@ -70,6 +70,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void QuitGame(){
+        Debug.Log("quit");
         isDead = false;
         pauseMenuUI.SetActive(false);
         PauseMenu.isPaused2 = false;
