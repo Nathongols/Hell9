@@ -56,7 +56,6 @@ public class trampolineGen : MonoBehaviour
                 } else if (Input.GetKeyUp(KeyCode.Mouse0) && (coolReady) && (newPos1)){
                     pos2 = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
                     dist = Vector2.Distance(pos1, pos2);
-                    Debug.Log(dist);
                     ang = Mathf.Atan2(pos2.y - pos1.y, pos2.x - pos1.x) * 180 / Mathf.PI;
                     Quaternion target = Quaternion.Euler(0, 0, ang);
                     GameObject Create = Instantiate(myPrefab, pos1, target);
