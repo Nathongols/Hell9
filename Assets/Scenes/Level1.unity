@@ -4540,6 +4540,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3106514066665252022, guid: c7938894a4418e4468c3c467650d26c4, type: 3}
+      propertyPath: m_XDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106514066665252022, guid: c7938894a4418e4468c3c467650d26c4, type: 3}
+      propertyPath: m_YDamping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3106514068039284810, guid: c7938894a4418e4468c3c467650d26c4, type: 3}
       propertyPath: m_RootOrder
       value: 3
